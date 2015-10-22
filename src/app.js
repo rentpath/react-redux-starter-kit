@@ -1,7 +1,10 @@
 /* eslint-env browser */
 import React from 'react';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import { fromJS } from 'immutable';
+import { Router } from 'react-router';
+const getRoutes = require('routes');
 
 const initialState = window.__INITIAL_STATE__;
 
@@ -13,13 +16,18 @@ Object
 
 const store = require('./store')(initialState);
 
-const App = require('components').App;
-
 window.dev = { store };
+
+
+const component = (
+  <Router routes={getRoutes(store.getState())} />
+);
 
 function render() {
   ReactDOM.render(
-    <App state={store.getState()} dispatch={store.dispatch} />,
+    <Provider store={store} key="provider">
+      {component}
+    </Provider>,
     document.getElementById('react-view')
   );
 }

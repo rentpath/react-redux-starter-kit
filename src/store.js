@@ -1,7 +1,15 @@
 const { createStore } = require('redux');
+import createHistory from 'history/lib/createBrowserHistory';
+import { reduxReactRouter } from 'redux-router';
+import getRoutes from './routes';
 
 module.exports = function configureStore(initialState) {
-  const store = createStore(require('./reducers'), initialState);
+  let store;
+  if (global.__CLIENT__) {
+    store = createStore(reduxReactRouter, getRoutes, require('./reducers'), createHistory, initialState);
+  } else {
+    store = createStore(getRoutes, require('./reducers'), initialState);
+  }
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

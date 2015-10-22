@@ -5,6 +5,10 @@
     "mocha": true,
     "es6": true
   },
+  "ecmaFeatures": {
+    "classes": true,
+    "jsx": true
+  },
   "rules": {
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
@@ -25,17 +29,16 @@
     "indent": [2, 2, {"SwitchCase": 1}],
     "no-console": 0,
     "no-alert": 0,
-    "spaced-comment": [0, "always"]
+    "spaced-comment": [0, "always"],
+    "no-unused-expressions": 1
   },
   "plugins": [
     "react", "import"
   ],
-  "settings": { 
+  "settings": {
     "import/parser": "babel-eslint",
     "import/resolve": {
       moduleDirectory: ["node_modules", "src"]
     }
   },
 }
-
-
