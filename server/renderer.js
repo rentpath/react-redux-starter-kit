@@ -28,7 +28,7 @@ const generatePage = (store, renderProps, initialState) => {
     </Provider>
   );
 
-  const page = `
+  return `
     <!DOCTYPE html>
     <html>
       <head>
