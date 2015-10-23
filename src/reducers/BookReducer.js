@@ -1,4 +1,4 @@
-import { REQUEST_BOOKS, RECEIVE_BOOKS } from 'actions';
+import { REQUEST_BOOKS, RECEIVE_BOOKS, INVALIDATE_BOOKS } from 'actions';
 
 const initialState = {
   isFetching: false,
@@ -13,7 +13,7 @@ export default function bookReducer(state = initialState, action) {
     case RECEIVE_BOOKS:
       return Object.assign({}, state, { isFetching: false, didInvalidate: false, items: action.payload });
     case INVALIDATE_BOOKS:
-      return Object.assign({}, state, { isFetching: false, didInvalidate: true, items: []})
+      return Object.assign({}, state, { isFetching: false, didInvalidate: true, items: []});
     default:
       return state;
   }
