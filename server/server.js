@@ -23,6 +23,8 @@ app.use(function(req, res, next) {
   require('./api')(req, res, next);
 });
 
+app.use(express.static('static'));
+
 // Anything else gets passed to the client app's server rendering
 app.use(require('./renderer'));
 

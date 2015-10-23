@@ -24,6 +24,7 @@ export default (req, res) => {
         <script type="application/javascript">
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
+        <link href="/normalize.css" rel="stylesheet" />
       </head>
       <body>
         <div id="react-view">${componentHTML}</div>
