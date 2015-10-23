@@ -8,8 +8,6 @@ import getRoutes from 'routes';
 import DevTools from 'containers/DevTools/DevTools';
 import createStore from 'store';
 
-const { App } = require('components');
-
 export default (req, res) => {
   const location = createLocation(req.url);
 
@@ -52,6 +50,7 @@ export default (req, res) => {
             <script type="application/javascript">
               window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
             </script>
+            <link href="/normalize.css" rel="stylesheet" />
           </head>
           <body>
             <div id="react-view">${componentHTML}</div>
