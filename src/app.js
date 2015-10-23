@@ -19,13 +19,13 @@ Object
 const history = createBrowserHistory();
 const store = require('./store')(initialState);
 
-window.dev = { store };
-
 let component = (
   <Router history={history} children={getRoutes(store.getState())} />
 );
 
 if (__DEVELOPMENT__) {
+  window.React = React; // enable debugger
+
   component = (
     <div>
       {component}
@@ -34,26 +34,9 @@ if (__DEVELOPMENT__) {
   );
 }
 
-const dest = document.getElementById('react-view');
-
 ReactDOM.render(
   <Provider store={store} key="provider">
     {component}
   </Provider>,
-  dest
+  document.getElementById('react-view')
 );
-
-if (process.env.NODE_ENV !== 'production') {
-  window.React = React; // enable debugger
-}
-
-//const DevTools = require('./containers/DevTools/DevTools');
-//ReactDOM.render(
-//  <Provider store={store} key="provider">
-//    <div>
-//      {component}
-//      <DevTools />
-//    </div>
-//  </Provider>,
-//  dest
-//);
