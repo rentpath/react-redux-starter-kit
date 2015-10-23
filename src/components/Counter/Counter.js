@@ -1,19 +1,19 @@
 import React, { Component, PropTypes } from 'react';
-const styles = require('./Counter.css');
+import Display from './Display';
+import Button from './Button';
 
 export default class Counter extends Component {
   static propTypes ={
-    onClick: PropTypes.func.isRequired,
+    onIncrement: PropTypes.func.isRequired,
     count: PropTypes.number
   }
 
   render() {
+    const { count, onIncrement } = this.props;
     return (
       <div>
-        <p>{this.props.count}</p>
-        <button className={styles.increment} onClick={() => this.props.onClick()}>
-          +1
-        </button>
+        <Display count={count} />
+        <Button onClick={onIncrement} />
       </div>
     );
   }

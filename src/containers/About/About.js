@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Counter } from 'components';
-import * as actions from 'actions';
+import { inc } from 'actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -17,7 +17,7 @@ export default class About extends Component {
     return (
       <article>
         <h1>About</h1>
-        <Counter count={count} {...bindActionCreators({ onClick: actions.inc }, dispatch)} />
+        <Counter count={count} {...bindActionCreators({ onIncrement: inc }, dispatch)} />
       </article>
     );
   }
