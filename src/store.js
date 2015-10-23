@@ -6,7 +6,7 @@ import getRoutes from './routes';
 module.exports = function configureStore(initialState) {
   let store;
   if (global.__CLIENT__) {
-    store = createStore(reduxReactRouter, getRoutes, require('./reducers'), createHistory, initialState);
+    store = createStore(reduxReactRouter({ createHistory }), getRoutes, require('./reducers'), initialState);
   } else {
     store = createStore(getRoutes, require('./reducers'), initialState);
   }
