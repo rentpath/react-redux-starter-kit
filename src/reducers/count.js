@@ -4,9 +4,9 @@ export default function count(state = 5, action) {
   console.log('count', state, action);
   switch (action.type) {
     case INCREMENT_COUNTER:
-      return state + action.by;
+      return state + action.payload;
     case DECREMENT_COUNTER:
-      return state - action.by;
+      return state - action.payload;
     default:
       return state;
   }
