@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom';
 import { fromJS } from 'immutable';
 import { Router } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
-const getRoutes = require('routes');
+import getRoutes from 'routes';
+import DevTools from './containers/DevTools/DevTools';
 
 const initialState = window.__INITIAL_STATE__;
 
@@ -20,9 +21,18 @@ const store = require('./store')(initialState);
 
 window.dev = { store };
 
-const component = (
-  <Router history={history}>{getRoutes(store.getState())}</Router>
+let component = (
+  <Router history={history} children={getRoutes(store.getState())} />
 );
+
+if (__DEVELOPMENT__) {
+  component = (
+    <div>
+      {component}
+      <DevTools />
+    </div>
+  );
+}
 
 const dest = document.getElementById('react-view');
 

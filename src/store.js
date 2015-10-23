@@ -1,58 +1,36 @@
-const { createStore } = require('redux');
-import createHistory from 'history/lib/createBrowserHistory';
-import { reduxReactRouter } from 'redux-router';
-import routes from './routes';
-const DevTools = require('containers/DevTools/DevTools');
-const { persistState } = require('redux-devtools');
-const reducers = require('./reducers');
+import { createStore, applyMiddleware, compose } from 'redux';
+import { persistState } from 'redux-devtools';
+import thunk from 'redux-thunk';
+import createLogger from 'redux-logger';
+import rootReducer from './reducers';
+import DevTools from './containers/DevTools/DevTools';
 
 
-module.exports = function configureStore(initialState) {
-  let store;
-  if (global.__CLIENT__) {
-    store = createStore(reduxReactRouter({ createHistory, routes }), reducers, DevTools.instrument(), persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)), initialState);
-  } else {
-    store = createStore(reducers, initialState);
-  }
+let finalCreateStore;
+if (global.__CLIENT__) {
+  finalCreateStore = compose(
+    //reduxReactRouter({ routes, createHistory }),
+    applyMiddleware(thunk),
+    applyMiddleware(createLogger()),
+    DevTools.instrument(),
+    persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+  )(createStore);
+} else {
+  finalCreateStore = compose(
+    applyMiddleware(thunk),
+    applyMiddleware(createLogger()),
+    DevTools.instrument()
+  )(createStore);
+}
+
+export default function configureStore(initialState) {
+  const store = finalCreateStore(rootReducer, initialState);
 
   if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('./reducers', () => {
-      const nextRootReducer = require('./reducers');
-      store.replaceReducer(nextRootReducer);
-    });
+    module.hot.accept('./reducers', () =>
+      store.replaceReducer(require('./reducers'))
+    );
   }
 
   return store;
-};
-
-//import { createStore, applyMiddleware, compose } from 'redux';
-//import { reduxReactRouter } from 'redux-router';
-//import createLogger from 'redux-logger';
-//import createHistory from 'history/lib/createBrowserHistory';
-//import { persistState } from 'redux-devtools';
-
-//const routes = require('routes');
-//const rootReducer = require('reducers');
-//const DevTools = require('containers').DevTools;
-
-//const finalCreateStore = compose(
-  //reduxReactRouter({ routes, createHistory }),
-  //applyMiddleware(createLogger()),
-  //DevTools.instrument(),
-  //persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
-//)(createStore);
-
-//export default function configureStore(initialState) {
-  //const store = finalCreateStore(rootReducer, initialState);
-
-  //if (module.hot) {
-// //Enable Webpack hot module replacement for reducers
-    //module.hot.accept('../reducers', () => {
-      //const nextRootReducer = require('../reducers');
-      //store.replaceReducer(nextRootReducer);
-    //});
-  //}
-
-  //return store;
-//}
+}

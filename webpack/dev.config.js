@@ -15,7 +15,11 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      __CLIENT__: true,
+      __DEVELOPMENT__: true
+    })
   ],
   resolve: {
     modulesDirectories: ['node_modules', 'src'],

@@ -1,10 +1,10 @@
 import chokidar from 'chokidar';
+import webpack from 'webpack';
+import config from '../webpack/dev.config';
+
+const compiler = webpack(config);
 
 export default (app) => {
-  var webpack = require('webpack');
-  var config = require('../webpack/dev.config');
-  var compiler = webpack(config);
-
   app.use(require("webpack-dev-middleware")(compiler, {
     noInfo: true, publicPath: config.output.publicPath
   }));
@@ -18,7 +18,10 @@ export default (app) => {
     watcher.on('all', () => {
       console.log("Clearing /server/ module cache from server");
       Object.keys(require.cache).forEach((id) => {
-        if (/\/server\//.test(id)) delete require.cache[id];
+        if (/\/server\//.test(id)) {
+          console.log("clearing: ", id);
+          delete require.cache[id];
+        }
       });
     });
   });
