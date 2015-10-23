@@ -8,6 +8,9 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 import getRoutes from 'routes';
 import DevTools from './containers/DevTools/DevTools';
 
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
+
 const initialState = window.__INITIAL_STATE__;
 
 Object
