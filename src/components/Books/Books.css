@@ -1,0 +1,38 @@
+.formInput {
+  font-size: 16px;
+  padding: 5px;
+}
+
+.formButton {
+  border: 0;
+  border-radius: 3px;
+  background: #333;
+  color: #fff;
+  font-size: 16px;
+  padding: 7px 10px;
+  display: inline-block;
+  margin-left: 5px;
+  text-align: center;
+}
+
+.status {
+  padding: 5px;
+  color: #fff;
+}
+
+.waiting {
+  composes: status;
+  background: grey;
+}
+
+.uhoh {
+  composes: status;
+  background: red;
+}
+
+.listItem {
+  padding: 10px;
+  background: #ededed;
+  margin: 0;
+  border-bottom: 1px solid #ccc;
+}

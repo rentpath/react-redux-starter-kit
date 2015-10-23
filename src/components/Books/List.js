@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import styles from './Books.css';
 
 export default class List extends Component {
   static propTypes = {
@@ -11,7 +12,7 @@ export default class List extends Component {
       <div>
         {items.map((book) => {
           return (
-            <p key={book.id}>{book.volumeInfo.title}</p>
+            <p className={styles.listItem} key={book.id}>{book.volumeInfo.title}</p>
           );
         })}
       </div>

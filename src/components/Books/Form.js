@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import styles from './Books.css';
 
 export default class Form extends Component {
   static propTypes = {
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func.isRequired
   }
 
   handleSearch(event) {
@@ -13,8 +14,8 @@ export default class Form extends Component {
   render() {
     return (
       <form onSubmit={(event) => this.handleSearch(event)}>
-        <input type="text" ref="q" />
-        <input type="submit" value="Fetch" />
+        <input className={styles.formInput} type="text" ref="q" placeholder="Search for Books" />
+        <input className={styles.formButton} type="submit" value="Fetch" />
       </form>
     );
   }
