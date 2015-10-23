@@ -17,7 +17,7 @@ export default class About extends Component {
     return (
       <article>
         <h1>About</h1>
-        <Counter count={count} {...bindActionCreators({ inc: actions.inc }, dispatch)} />
+        <Counter count={count} {...bindActionCreators({ onClick: actions.inc }, dispatch)} />
       </article>
     );
   }

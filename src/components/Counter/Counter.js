@@ -3,7 +3,7 @@ const styles = require('./Counter.css');
 
 export default class Counter extends Component {
   static propTypes ={
-    inc: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired,
     count: PropTypes.number
   }
 
@@ -11,7 +11,7 @@ export default class Counter extends Component {
     return (
       <div>
         <p>{this.props.count}</p>
-        <button className={styles.increment} onClick={() => this.props.inc()}>
+        <button className={styles.increment} onClick={() => this.props.onClick()}>
           +1
         </button>
       </div>
