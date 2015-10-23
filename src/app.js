@@ -24,14 +24,26 @@ const component = (
   <Router history={history}>{getRoutes(store.getState())}</Router>
 );
 
-function render() {
-  ReactDOM.render(
-    <Provider store={store} key="provider">
-      {component}
-    </Provider>,
-    document.getElementById('react-view')
-  );
+const dest = document.getElementById('react-view');
+
+ReactDOM.render(
+  <Provider store={store} key="provider">
+    {component}
+  </Provider>,
+  dest
+);
+
+if (process.env.NODE_ENV !== 'production') {
+  window.React = React; // enable debugger
 }
 
-store.subscribe(render);
-render();
+//const DevTools = require('./containers/DevTools/DevTools');
+//ReactDOM.render(
+//  <Provider store={store} key="provider">
+//    <div>
+//      {component}
+//      <DevTools />
+//    </div>
+//  </Provider>,
+//  dest
+//);

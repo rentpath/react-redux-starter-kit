@@ -8,10 +8,13 @@ export default class App extends Component {
 
   render() {
     return (
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-      </nav>
+      <div>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+        </nav>
+        {this.props.children}
+      </div>
     );
   }
 }

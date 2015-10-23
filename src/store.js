@@ -1,14 +1,18 @@
 const { createStore } = require('redux');
 import createHistory from 'history/lib/createBrowserHistory';
 import { reduxReactRouter } from 'redux-router';
-import getRoutes from './routes';
+import routes from './routes';
+const DevTools = require('containers/DevTools/DevTools');
+const { persistState } = require('redux-devtools');
+const reducers = require('./reducers');
+
 
 module.exports = function configureStore(initialState) {
   let store;
   if (global.__CLIENT__) {
-    store = createStore(reduxReactRouter({ createHistory }), getRoutes, require('./reducers'), initialState);
+    store = createStore(reduxReactRouter({ createHistory, routes }), reducers, DevTools.instrument(), persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)), initialState);
   } else {
-    store = createStore(getRoutes, require('./reducers'), initialState);
+    store = createStore(reducers, initialState);
   }
 
   if (module.hot) {
