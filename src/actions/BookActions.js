@@ -14,12 +14,14 @@ const fetchBooks = (query) => {
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
       .then((response) => {
         if (response.status >= 400) {
-          dispatch(invalidateBooks(new Error('Bad response from server')));
+          return Promise.reject(new Error('Bad response from server'));
         }
         return response.json();
       })
       .then((response) => {
         dispatch(receiveBooks(response.items));
+      }).catch((error) => {
+        dispatch(invalidateBooks(error));
       });
   };
 };
