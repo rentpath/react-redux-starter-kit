@@ -2,9 +2,19 @@
     composes: box from "../common/layout.css";
     color: white;
     cursor: pointer;
-    border: 1px solid green;
+    border: 0;
     border-radius: 3px;
-    background-color: green;
+    margin-right: 8px;
+}
+
+.positive {
+  composes: button;
+  background: green;
+}
+
+.negative {
+  composes: button;
+  background: red;
 }
 
 .text {
