@@ -5,7 +5,7 @@
   "main": "bin/server.js",
   "scripts": {
     "build": "webpack & webpack --config webpack/prod.config.js",
-    "start": "PORT=3000 NODE_PATH=$NODE_PATH:./src node --harmony bin/server.js",
+    "start": "npm install && PORT=3000 NODE_PATH=$NODE_PATH:./src node --harmony bin/server.js",
     "lint": "eslint .",
     "test": "mocha --compilers js:babel/register --require ./test/test_helper.js --recursive",
     "test:watch": "npm run test -- --watch"

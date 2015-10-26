@@ -10,8 +10,8 @@ global.__SERVER__ = true;
 global.__DISABLE_SSR__ = false;  // <----- DISABLES SERVER SIDE RENDERING FOR ERROR DEBUGGING
 global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
 
-var config = require('../src/config');
-var server = require('../server/server.js');
+var config = require('config');
+var server = require('server');
 
 if (config.port) {
   server.listen(config.port, (err) => {
