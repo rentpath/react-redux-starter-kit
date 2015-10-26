@@ -7,7 +7,7 @@
     "build": "webpack & webpack --config webpack/prod.config.js",
     "start": "npm install && PORT=3000 NODE_PATH=$NODE_PATH:./src node --harmony bin/server.js",
     "lint": "eslint .",
-    "test": "mocha --compilers js:babel/register --require ./test/test_helper.js --recursive",
+    "test": "karma start",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
@@ -65,6 +65,12 @@
     "eslint-plugin-react": "^3.6.3",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
+    "karma": "^0.13.14",
+    "karma-chai": "^0.1.0",
+    "karma-cli": "^0.1.1",
+    "karma-mocha": "^0.2.0",
+    "karma-phantomjs2-launcher": "^0.3.2",
+    "karma-webpack": "^1.7.0",
     "mocha": "^2.3.3",
     "postcss": "^5.0.10",
     "postcss-modules-extract-imports": "^1.0.0",
