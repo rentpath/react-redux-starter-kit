@@ -1,4 +1,4 @@
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from 'actions';
+import { INCREMENT_COUNTER, DECREMENT_COUNTER } from 'actions/const';
 
 export default function countReducer(state = 5, action) {
   switch (action.type) {

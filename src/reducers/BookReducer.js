@@ -1,4 +1,4 @@
-import { REQUEST_BOOKS, RECEIVE_BOOKS, INVALIDATE_BOOKS } from 'actions';
+import { REQUEST_BOOKS, RECEIVE_BOOKS, INVALIDATE_BOOKS } from 'actions/const';
 import { Map, List, fromJS } from 'immutable';
 
 const initialState = Map({

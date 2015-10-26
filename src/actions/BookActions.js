@@ -1,8 +1,5 @@
 import { createAction } from 'redux-actions';
-
-export const REQUEST_BOOKS = 'REQUEST_BOOKS';
-export const RECEIVE_BOOKS = 'RECEIVE_BOOKS';
-export const INVALIDATE_BOOKS = 'INVALIDATE_BOOKS';
+import { REQUEST_BOOKS, RECEIVE_BOOKS, INVALIDATE_BOOKS } from './const';
 
 const requestBooks = createAction(REQUEST_BOOKS);
 const receiveBooks = createAction(RECEIVE_BOOKS, (items) => items);
