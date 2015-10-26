@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { BooksForm, BooksSearchStatus, BooksList } from 'components';
-import { Map, List } from 'immutable';
+import { Map } from 'immutable';
 import { fetchBooks } from 'actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -15,13 +15,12 @@ export default class Books extends Component {
 
   render() {
     const { books, dispatch } = this.props;
-    const items = books.get('items') || List([]);
     return (
       <div>
         <h1>Books!</h1>
         <BooksForm {...bindActionCreators({ onSubmit: fetchBooks }, dispatch)} />
         <BooksSearchStatus isFetching={books.get('isFetching')} didInvalidate={books.get('didInvalidate')} />
-        <BooksList items={items} />
+        <BooksList items={books.get('items')} />
       </div>
     );
   }
