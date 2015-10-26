@@ -1,5 +1,5 @@
 import { REQUEST_BOOKS, RECEIVE_BOOKS, INVALIDATE_BOOKS } from 'actions';
-import { Map, List } from 'immutable';
+import { Map, List, fromJS } from 'immutable';
 
 const initialState = Map({
   isFetching: false,
@@ -12,7 +12,7 @@ export default function bookReducer(state = initialState, action) {
     case REQUEST_BOOKS:
       return state.merge({ isFetching: true, didInvalidate: false });
     case RECEIVE_BOOKS:
-      return state.merge({ isFetching: false, didInvalidate: false, items: List(action.payload) });
+      return state.merge({ isFetching: false, didInvalidate: false, items: fromJS(action.payload) });
     case INVALIDATE_BOOKS:
       return state.merge({ isFetching: false, didInvalidate: true, items: List([]) });
     default:

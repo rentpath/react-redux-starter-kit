@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
+import { List } from 'immutable';
 import styles from './Books.css';
 
-export default class List extends Component {
+export default class BooksList extends Component {
   static propTypes = {
-    items: PropTypes.arrayOf(PropTypes.object)
+    items: PropTypes.instanceOf(List)
   }
 
   render() {
@@ -12,7 +13,7 @@ export default class List extends Component {
       <div>
         {items.map((book) => {
           return (
-            <p className={styles.listItem} key={book.id}>{book.volumeInfo.title}</p>
+            <p className={styles.listItem} key={book.get('id')}>{book.get('volumeInfo').get('title')}</p>
           );
         })}
       </div>

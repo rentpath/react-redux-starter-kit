@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { BooksForm, BooksSearchStatus, BooksList } from 'components';
-import { List } from 'immutable';
+import { Map, List } from 'immutable';
 import { fetchBooks } from 'actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 export default class Books extends Component {
   static propTypes = {
     dispatch: PropTypes.func,
-    books: PropTypes.any
+    books: PropTypes.instanceOf(Map)
   }
 
   render() {
