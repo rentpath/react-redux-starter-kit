@@ -4,7 +4,7 @@ module.exports = function(config) {
     browsers: ['PhantomJS2'],
     frameworks: ['mocha','chai'],
 
-    reporters: ['progress'],
+    reporters: ['mocha'],
 
     port: 9876,
     colors: true,
@@ -34,6 +34,7 @@ module.exports = function(config) {
       'karma-phantomjs2-launcher',
       'karma-mocha',
       'karma-chai',
+      'karma-mocha-reporter',
       require("karma-webpack")
     ]
   });
