@@ -12,7 +12,7 @@ module.exports = {
     })
   ],
   resolve: {
-    modulesDirectories: ['node_modules', 'src'],
+    modulesDirectories: ['node_modules', 'src', 'test'],
     extensions: ['', '.js'],
     alias: {
       request: 'browser-request'
@@ -23,14 +23,20 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loaders: ['eslint-loader'],
-        include: path.join(__dirname, '../src')
+        include: [
+          path.join(__dirname, '../src'),
+          path.join(__dirname, '../test')
+        ]
       }
     ],
     loaders: [
       {
         test: /\.jsx?$/,
         loader: 'babel',
-        include: path.join(__dirname, '../src'),
+        include: [
+          path.join(__dirname, '../src'),
+          path.join(__dirname, '../test')
+        ],
         query: {
           optional: ['runtime'],
           stage: 0,

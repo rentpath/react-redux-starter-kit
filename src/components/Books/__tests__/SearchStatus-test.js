@@ -1,6 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { React, ReactDOM, TestUtils } from 'utils';
 import { expect } from 'chai';
 import SearchStatus from '../SearchStatus';
 
