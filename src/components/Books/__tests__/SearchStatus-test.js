@@ -1,5 +1,4 @@
-import { React, ReactDOM, TestUtils } from 'utils';
-import { expect } from 'chai';
+import { React, ReactDOM, TestUtils, expect } from 'utils';
 import SearchStatus from '../SearchStatus';
 
 describe('SearchStatus', () => {
