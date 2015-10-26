@@ -30,7 +30,9 @@
     "no-console": 0,
     "no-alert": 0,
     "spaced-comment": [0, "always"],
-    "no-unused-expressions": 1
+    "no-unused-expressions": 1,
+    // Does not work well with Immutable. e.g. Map({ foo: 'bar' })
+    "new-cap": 0
   },
   "plugins": [
     "react", "import"
