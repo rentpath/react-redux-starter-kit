@@ -8,8 +8,8 @@ import { connect } from 'react-redux';
 
 export default class About extends Component {
   static propTypes = {
-    dispatch: PropTypes.func,
-    count: PropTypes.number
+    dispatch: PropTypes.func.isRequired,
+    count: PropTypes.number.isRequired
   };
 
   render() {

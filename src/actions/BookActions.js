@@ -23,4 +23,4 @@ const fetchBooks = (query) => {
   };
 };
 
-export { fetchBooks, requestBooks };
+export { fetchBooks, requestBooks, receiveBooks, invalidateBooks };

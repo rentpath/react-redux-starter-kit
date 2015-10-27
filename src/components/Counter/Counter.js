@@ -6,7 +6,7 @@ export default class Counter extends Component {
   static propTypes ={
     onIncrement: PropTypes.func.isRequired,
     onDecrement: PropTypes.func.isRequired,
-    count: PropTypes.number
+    count: PropTypes.number.isRequired
   }
 
   render() {
