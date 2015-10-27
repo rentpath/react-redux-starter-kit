@@ -7,6 +7,7 @@ import createHistory from 'history/lib/createMemoryHistory';
 import getRoutes from 'routes';
 import DevTools from 'containers/DevTools/DevTools';
 import createStore from 'store';
+import HTML from '../helpers/html';
 
 const generatePage = (store, renderProps, initialState) => {
   let component = (
@@ -22,28 +23,19 @@ const generatePage = (store, renderProps, initialState) => {
     );
   }
 
-  const componentHTML = ReactDOMServer.renderToString(
+  const providerComponent = (
     <Provider store={store} key="provider">
       {component}
     </Provider>
   );
 
+  const htmlBody = ReactDOMServer.renderToString(
+    <HTML state={initialState} component={providerComponent} />
+  );
+
   return `
     <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Isomorphic Redux Demo</title>
-        <script type="application/javascript">
-          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
-        </script>
-        <link href="/normalize.css" rel="stylesheet" />
-      </head>
-      <body>
-        <div id="react-view">${componentHTML}</div>
-        <script type="application/javascript" src="/bundle.js"></script>
-      </body>
-    </html>
+    ${htmlBody}
   `
 }
 
