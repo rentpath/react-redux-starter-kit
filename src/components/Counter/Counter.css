@@ -1,10 +1,11 @@
 .button {
-    composes: box from "../common/layout.css";
-    color: white;
-    cursor: pointer;
-    border: 0;
-    border-radius: 3px;
-    margin-right: 8px;
+  composes: box from "../common/layout.css";
+  color: white;
+  cursor: pointer;
+  border: 0;
+  border-radius: 10px;
+  margin-right: 8px;
+  padding: 10px;
 }
 
 .positive {

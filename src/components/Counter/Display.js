@@ -8,9 +8,7 @@ export default class Display extends Component {
 
   render() {
     return (
-      <div>
-        <p className={styles.text}>{this.props.count}</p>
-      </div>
+      <p className={styles.text}>{this.props.count}</p>
     );
   }
 }

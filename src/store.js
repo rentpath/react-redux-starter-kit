@@ -5,7 +5,6 @@ import createLogger from 'redux-logger';
 import rootReducer from './reducers';
 import DevTools from './containers/DevTools/DevTools';
 
-
 let finalCreateStore;
 if (global.__CLIENT__) {
   finalCreateStore = compose(

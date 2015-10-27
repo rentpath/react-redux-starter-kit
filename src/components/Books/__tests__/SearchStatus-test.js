@@ -2,7 +2,7 @@ import { React, ReactDOM, TestUtils, expect } from 'utils';
 import SearchStatus from '../SearchStatus';
 
 describe('SearchStatus', () => {
-  describe('render', () => {
+  describe('#render', () => {
     describe('when it is fetching', () => {
       let component;
       let node;
