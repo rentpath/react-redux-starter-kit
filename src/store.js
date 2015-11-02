@@ -10,7 +10,7 @@ import { compose } from 'redux';
 // persist debug sessions across page reloads
 import { persistState } from 'redux-devtools';
 
-// delay the dispatch of an action, or dispatch only if a certain condition is met
+// allows actions to return promises for ajax requests.
 import thunk from 'redux-thunk';
 
 // exposes single constructor function for creating logger middleware.

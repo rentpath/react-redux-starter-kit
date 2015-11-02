@@ -4,6 +4,8 @@ import React from 'react';
 // Provider makes the store available to all connect() calls in the
 // component hierarchy below. (connect() is what connects a React
 // component to a Redux store.)
+// It gives smart components access to the store and allows them to
+// call dispatch.
 import { Provider } from 'react-redux';
 
 // ReactDOM is part of isomorphic React. It renders to HTML or the DOM.
@@ -18,7 +20,7 @@ import { fromJS } from 'immutable';
 import { Router } from 'react-router';
 
 // history abstracts away the differences in platforms and provides a
-// minimal API to manage history. we are only including the web
+// common API to manage history. we are only including the web
 // module
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 
@@ -33,12 +35,14 @@ import DevTools from './containers/DevTools/DevTools';
 require('es6-promise').polyfill();
 
 // adds fetch() as a global so that its API is consistent between client and server.
+// Also a polyfill
 require('isomorphic-fetch');
 
-// __INITIAL_STATE__ is a JS object inlined with React's dangerouslySetInnerHTML
+// __INITIAL_STATE__ is a JS object inlined with React's dangerouslySetInnerHTML.
+// It lets the server tell the client how it rendered the components.
 const initialState = window.__INITIAL_STATE__;
 
-// de-immutable-ify initial state
+// immutable-ify initial state
 Object
   .keys(initialState)
   .forEach(key => {

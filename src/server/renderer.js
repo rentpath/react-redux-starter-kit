@@ -14,8 +14,8 @@ import { match } from 'react-router';
 // history object and the current location in context.
 import { RoutingContext } from 'react-router';
 
-// ReactDOMServer is the API for rendering React components from
-// the server.
+// ReactDOMServer is the API for rendering React components into
+// an HTML string. This is done on the server.
 import ReactDOMServer from 'react-dom/server';
 
 // A location object is conceptually similar to document.location in
@@ -79,7 +79,8 @@ export default (req, res) => {
   // location is used to provide the correct renderProps to RoutingContext
   const location = createLocation(req.url);
 
-  // Redux store is initialized blank on every page load
+  // Redux store is initialized on every page load.
+  // look in the reducers for default values.
   const store = createStore();
   const history = createHistory();
   const initialState = store.getState();

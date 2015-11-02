@@ -2,8 +2,8 @@
 // PropTypes provides type checking for props in dev mode.
 import React, {Component, PropTypes} from 'react';
 
-// ReactDOMServer is the API for rendering React components from
-// the server.
+// ReactDOMServer is the API for rendering React components into
+// an HTML string. This is done on the server.
 import ReactDOM from 'react-dom/server';
 
 // HTML meta tags for React-based apps. Works for both client- and
