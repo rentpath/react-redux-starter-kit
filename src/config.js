@@ -1,5 +1,7 @@
+// require just the ES6-to-JS conversion part of babel
 require('babel-core/polyfill');
 
+// the environment object is merged into the exports object below
 const environment = {
   development: {
     isProduction: false
@@ -9,9 +11,14 @@ const environment = {
   }
 }[process.env.NODE_ENV || 'development'];
 
+// exports are returned as a result of the require('src/config') statement
 module.exports = Object.assign({
+
+  // environment variables
   port: process.env.PORT,
   apiPort: process.env.APIPORT,
+
+  // used in the root <html> template
   app: {
     title: 'React Redux Example',
     description: 'All the modern best practices in one example.',
