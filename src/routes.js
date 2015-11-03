@@ -9,12 +9,15 @@ import {
     Photos,
     NotFound
   } from 'containers';
-import { fetchPhotosSync } from 'actions';
+import { bindActionCreators } from 'redux';
+import { fetchPhotos, fetchPhotosSync } from 'actions';
 
 export default (state, dispatch) => {
-  function onPhotosEnter(nextState, replaceState, callback) {
-    fetchPhotosSync(dispatch, callback);
+  function onPhotosEnterServer(nextState, replaceState, callback) {
+    return fetchPhotosSync(dispatch, callback);
   }
+  const onPhotosEnter = (__CLIENT__) ? bindActionCreators(fetchPhotos, dispatch) : onPhotosEnterServer;
+
   return (
     <Route path="/" component={App} state={state}>
       <IndexRoute component={Home}/>

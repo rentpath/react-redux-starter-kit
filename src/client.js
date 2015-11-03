@@ -41,6 +41,8 @@ require('isomorphic-fetch');
 // __INITIAL_STATE__ is a JS object inlined with React's dangerouslySetInnerHTML.
 // It lets the server tell the client how it rendered the components.
 const initialState = window.__INITIAL_STATE__;
+window.__CLIENT__ = true;
+window.__SERVER__ = false;
 
 // immutable-ify initial state
 Object
