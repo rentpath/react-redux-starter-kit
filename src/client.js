@@ -56,7 +56,7 @@ const history = createBrowserHistory();
 const store = require('./store')(initialState);
 
 let component = (
-  <Router history={history} children={getRoutes(store.getState())} />
+  <Router history={history} children={getRoutes(store.getState(), store.dispatch)} />
 );
 
 if (__DEVELOPMENT__) {

@@ -44,7 +44,7 @@ import HTML from '../helpers/html';
 // result of generatePage() is sent to the response if there are no errors
 // renderProps is pulled from request
 // new store is made each request
-const generatePage = (store, renderProps, initialState) => {
+const generatePage = (store, renderProps) => {
   let component = (
     <RoutingContext {...renderProps} />
   );
@@ -66,7 +66,7 @@ const generatePage = (store, renderProps, initialState) => {
 
   // renders page to string for transmission in HTTP response
   const htmlBody = ReactDOMServer.renderToString(
-    <HTML state={initialState} component={providerComponent} />
+    <HTML state={store.getState()} component={providerComponent} />
   );
 
   return `
@@ -83,8 +83,7 @@ export default (req, res) => {
   // look in the reducers for default values.
   const store = createStore();
   const history = createHistory();
-  const initialState = store.getState();
-  const routes = getRoutes(initialState);
+  const routes = getRoutes(store.getState(), store.dispatch);
 
   // history.match
   match({ routes, location }, (error, redirectLocation, renderProps) => {
@@ -97,9 +96,8 @@ export default (req, res) => {
 
     // on success:
     } else {
-
       // send rendered html as plain string.
-      res.send(generatePage(store, renderProps, initialState));
+      res.send(generatePage(store, renderProps));
     }
   });
 }
