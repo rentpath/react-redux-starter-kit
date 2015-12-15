@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import { REQUEST_PHOTOS, RECEIVE_PHOTOS, INVALIDATE_PHOTOS } from './const';
+require('isomorphic-fetch');
 
 const requestPhotos = createAction(REQUEST_PHOTOS);
 const receivePhotos = createAction(RECEIVE_PHOTOS, (items) => items);
@@ -23,9 +24,9 @@ const fetchPhotosSync = (dispatch, callback) => {
       });
       dispatch(receivePhotos(photos));
       callback();
-    }).catch((error) => {
-      dispatch(invalidatePhotos(error));
-      callback();
+    }).catch((err) => {
+      dispatch(invalidatePhotos(err));
+      callback(err);
     });
 };
 

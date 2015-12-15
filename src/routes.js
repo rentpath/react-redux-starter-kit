@@ -13,8 +13,9 @@ import { bindActionCreators } from 'redux';
 import { fetchPhotos, fetchPhotosSync } from 'actions';
 
 export default (state, dispatch) => {
-  function onPhotosEnterServer(nextState, replaceState, callback) {
-    return fetchPhotosSync(dispatch, callback);
+  function onPhotosEnterServer() {
+    const callback = function() {};
+    fetchPhotosSync(dispatch, callback);
   }
   const onPhotosEnter = (__CLIENT__) ? bindActionCreators(fetchPhotos, dispatch) : onPhotosEnterServer;
 
