@@ -25,7 +25,6 @@
     "compression": "^1.6.0",
     "es6-promise": "^3.0.2",
     "express": "^4.13.3",
-    "history": "^1.12.5",
     "immutable": "^3.7.5",
     "isomorphic-fetch": "^2.2.0",
     "piping": "^0.3.0",
