@@ -38,20 +38,16 @@ module.exports = {
           path.join(__dirname, '../test')
         ],
         query: {
-          optional: ['runtime'],
-          stage: 0,
+          presets: ['es2015', 'stage-0'],
           plugins: [
-            'react-display-name',
-            'react-transform'
-          ],
-          extra: {
-            'react-transform': {
+            ['react-display-name'],
+            ['react-transform', {
               transforms: [{
                 transform: 'react-transform-catch-errors',
                 imports: ['react', 'redbox-react']
               }]
-            }
-          }
+            }]
+          ]
         }
       },
       {

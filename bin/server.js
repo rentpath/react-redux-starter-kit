@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-require('babel/register')({});
+require('babel-core/register')({});
 
 /**
  * Define isomorphic constants.

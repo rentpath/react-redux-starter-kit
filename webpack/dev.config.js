@@ -44,8 +44,7 @@ module.exports = {
                    //exclude: /node_modules/,
         include: path.join(__dirname, '../src'),
         query: {
-          optional: ['runtime'],
-          stage: 0,
+          presets: ['es2015', 'stage-0'],
           plugins: [
             'react-display-name',
             'react-transform'
