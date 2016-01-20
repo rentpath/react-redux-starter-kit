@@ -4,7 +4,7 @@ import styles from './Books.css';
 export default class Form extends Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired
-  }
+  };
 
   handleSearch(event) {
     event.preventDefault();

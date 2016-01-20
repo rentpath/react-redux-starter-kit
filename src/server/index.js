@@ -25,17 +25,17 @@ require('css-modules-require-hook')({
 const app = express();
 
 if (__DEVELOPMENT__) {
-  require('./dev-server')(app);
+  require('./dev-server').default(app);
 }
 
 // Include server routes as a middleware
 app.use(function(req, res, next) {
-  require('./api')(req, res, next);
+  require('./api').default(req, res, next);
 });
 
 app.use(express.static('static'));
 
 // Anything else gets passed to the client app's server rendering
-app.use(require('./renderer'));
+app.use(require('./renderer').default);
 
 export default app;

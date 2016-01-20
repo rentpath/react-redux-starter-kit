@@ -11,7 +11,7 @@ export default class Books extends Component {
   static propTypes = {
     dispatch: PropTypes.func,
     books: PropTypes.instanceOf(Map)
-  }
+  };
 
   render() {
     const { books, dispatch } = this.props;
