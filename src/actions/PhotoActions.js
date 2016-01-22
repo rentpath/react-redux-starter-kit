@@ -6,15 +6,17 @@ const requestPhotos = createAction(REQUEST_PHOTOS);
 const receivePhotos = createAction(RECEIVE_PHOTOS, (items) => items);
 const invalidatePhotos = createAction(INVALIDATE_PHOTOS, (error) => error);
 
-const fetchPhotosSync = (dispatch, callback) => {
+const fetchPhotosSync = (dispatch, callback = function def() {}) => {
   fetch('https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=789e4649d6efc01e138f94a94f8696e7&text=Raleigh&format=json&nojsoncallback=1&extras=url_q')
     .then((response) => {
+      console.log('response', response.status);
       if (response.status >= 400) {
         return Promise.reject(new Error('Bad response from server'));
       }
       return response.json();
     })
     .then((response) => {
+      console.log('response');
       const photos = response.photos.photo.map((photo) => {
         return {
           width: photo.width_q,
@@ -22,6 +24,7 @@ const fetchPhotosSync = (dispatch, callback) => {
           url: photo.url_q
         };
       });
+      console.log('dispatch receive photos');
       dispatch(receivePhotos(photos));
       callback();
     }).catch((err) => {
@@ -33,7 +36,7 @@ const fetchPhotosSync = (dispatch, callback) => {
 const fetchPhotos = () => {
   return (dispatch) => {
     dispatch(requestPhotos());
-    fetchPhotosSync(dispatch, () => {});
+    fetchPhotosSync(dispatch);
   };
 };
 

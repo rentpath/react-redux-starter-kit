@@ -8,10 +8,13 @@ const initialState = Map({
 });
 
 export default function photoReducer(state = initialState, action) {
+  console.log('PhotoReducer', action.type);
   switch (action.type) {
     case REQUEST_PHOTOS:
+      console.log(REQUEST_PHOTOS);
       return state.merge({ isFetching: true, didInvalidate: false });
     case RECEIVE_PHOTOS:
+      console.log(RECEIVE_PHOTOS);
       return state.merge({ isFetching: false, didInvalidate: false, items: fromJS(action.payload) });
     case INVALIDATE_PHOTOS:
       return state.merge({ isFetching: false, didInvalidate: true, items: List([]) });

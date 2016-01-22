@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack & webpack --config webpack/prod.config.js",
     "start": "npm install && PORT=3000 NODE_PATH=$NODE_PATH:./src node --harmony bin/server.js",
+    "debug": "PORT=3000 NODE_PATH=$NODE_PATH:./src DEBUG=express:* node debug --harmony bin/server.js",
     "lint": "eslint .",
     "test": "karma start",
     "test:watch": "npm run test -- --watch"
