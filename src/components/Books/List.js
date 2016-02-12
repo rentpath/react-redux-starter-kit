@@ -5,7 +5,7 @@ import styles from './Books.css';
 export default class BooksList extends Component {
   static propTypes = {
     items: PropTypes.instanceOf(List)
-  }
+  };
 
   render() {
     const { items } = this.props;

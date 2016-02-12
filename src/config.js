@@ -1,5 +1,5 @@
 // require just the ES6-to-JS conversion part of babel
-require('babel-core/polyfill');
+require('babel-polyfill');
 
 // the environment object is merged into the exports object below
 const environment = {
@@ -42,4 +42,3 @@ module.exports = Object.assign({
     }
   }
 }, environment);
-

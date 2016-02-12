@@ -5,7 +5,7 @@ export default class SearchStatus extends Component {
   static propTypes = {
     isFetching: PropTypes.bool,
     didInvalidate: PropTypes.bool
-  }
+  };
 
   message() {
     if (this.props.isFetching) {

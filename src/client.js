@@ -49,11 +49,10 @@ Object
     initialState[key] = fromJS(initialState[key]);
   });
 
-
 // initialize the history, initialize the store, create the component, add devtools
 // if development, and render everything
 const history = createBrowserHistory();
-const store = require('./store')(initialState);
+const store = require('./store').default(initialState);
 
 let component = (
   <Router history={history} children={getRoutes(store.getState())} />

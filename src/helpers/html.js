@@ -17,7 +17,7 @@ export default class Application extends React.Component {
   static propTypes = {
     state: React.PropTypes.object,
     component: React.PropTypes.node
-  }
+  };
 
   render() {
     const metaData = config.app;

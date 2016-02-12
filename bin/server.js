@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-require('babel/register')({});
+require('babel-core/register')({});
 
 /**
  * Define isomorphic constants.
@@ -11,7 +11,7 @@ global.__DISABLE_SSR__ = false;  // <----- DISABLES SERVER SIDE RENDERING FOR ER
 global.__DEVELOPMENT__ = process.env.NODE_ENV !== 'production';
 
 var config = require('config');
-var server = require('server');
+var server = require('server').default;
 
 if (config.port) {
   server.listen(config.port, (err) => {

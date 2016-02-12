@@ -6,7 +6,7 @@ export default class Button extends Component {
     onClick: PropTypes.func.isRequired,
     text: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired
-  }
+  };
 
   render() {
     const { onClick } = this.props;

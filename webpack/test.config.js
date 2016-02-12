@@ -36,23 +36,7 @@ module.exports = {
         include: [
           path.join(__dirname, '../src'),
           path.join(__dirname, '../test')
-        ],
-        query: {
-          optional: ['runtime'],
-          stage: 0,
-          plugins: [
-            'react-display-name',
-            'react-transform'
-          ],
-          extra: {
-            'react-transform': {
-              transforms: [{
-                transform: 'react-transform-catch-errors',
-                imports: ['react', 'redbox-react']
-              }]
-            }
-          }
-        }
+        ]
       },
       {
         test: /\.css$/,

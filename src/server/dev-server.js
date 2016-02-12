@@ -5,11 +5,11 @@ import chokidar from 'chokidar';
 // and emits static assets representing those modules.
 import webpack from 'webpack';
 import config from '../../webpack/dev.config';
-const compiler = webpack(config);
 
 // function to enhance the express application with development
 // mode features
 export default (app) => {
+  const compiler = webpack(config);
 
   // serves assets compiled into memory without saving them
   // to disk first (useful in hot reloading as it automatically

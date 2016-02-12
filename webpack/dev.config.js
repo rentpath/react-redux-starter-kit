@@ -23,7 +23,7 @@ module.exports = {
   ],
   resolve: {
     modulesDirectories: ['node_modules', 'src'],
-    extensions: ['', '.js'],
+    extensions: ['', '.js', '.jsx'],
     alias: {
       request: 'browser-request'
     }
@@ -32,7 +32,6 @@ module.exports = {
     preLoaders: [
       {
         test: /\.jsx?$/,
-                  //exclude: /node_modules/,
         loaders: ['eslint-loader'],
         include: path.join(__dirname, '../src')
       }
@@ -41,28 +40,18 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel',
-                   //exclude: /node_modules/,
+        exclude: /node_modules/,
         include: path.join(__dirname, '../src'),
         query: {
-          optional: ['runtime'],
-          stage: 0,
           plugins: [
-            'react-display-name',
-            'react-transform'
-          ],
-          extra: {
-            'react-transform': {
-              transforms: [{
-                transform: 'react-transform-hmr',
-                imports: ['react'],
-                locals: ['module']
-              },
-              {
-                transform: 'react-transform-catch-errors',
-                imports: ['react', 'redbox-react']
+            ['react-transform', {
+              'transforms': [{
+                'transform': 'react-transform-hmr',
+                'imports': ['react'],
+                'locals': ['module'] // this is important for Webpack HMR
               }]
-            }
-          }
+            }]
+          ]
         }
       },
       {
