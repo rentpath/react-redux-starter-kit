@@ -1,6 +1,6 @@
 // Component is the base class for a react component.
 // PropTypes provides type checking for props in dev mode.
-import React, {Component, PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
 // ReactDOMServer is the API for rendering React components into
 // an HTML string. This is done on the server.
@@ -10,17 +10,13 @@ import ReactDOM from 'react-dom/server';
 // server-side rendering
 import DocumentMeta from 'react-document-meta';
 
-// /src/config.js
-import config from 'config';
-
-export default class Application extends React.Component {
+export default class Application extends Component {
   static propTypes = {
-    state: React.PropTypes.object,
-    component: React.PropTypes.node
+    state: PropTypes.object,
+    component: PropTypes.node
   };
 
   render() {
-    const metaData = config.app;
     const {state, component} = this.props;
 
     // on the server, must render component to string manually and set using
@@ -43,4 +39,4 @@ export default class Application extends React.Component {
     </html>
     );
   }
-};
+}

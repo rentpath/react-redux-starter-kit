@@ -13,12 +13,12 @@ require('css-modules-require-hook')({
   generateScopedName: (exportedName, exportedPath) => {
 
     // This path should match the localIdentName in your webpack.config.js.
-    var path = exportedPath
+    const path = exportedPath
               .substr(1)
-              .replace(/\//g, "-")
+              .replace(/\//g, '-')
               .replace('.css', '');
 
-    return path + "-" + exportedName;
+    return path + '-' + exportedName;
   }
 });
 
@@ -29,7 +29,7 @@ if (__DEVELOPMENT__) {
 }
 
 // Include server routes as a middleware
-app.use(function(req, res, next) {
+app.use(function apiHandler(req, res, next) {
   require('./api').default(req, res, next);
 });
 

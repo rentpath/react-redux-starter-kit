@@ -22,10 +22,6 @@ import ReactDOMServer from 'react-dom/server';
 // web browsers, with a few extra goodies.
 import createLocation from 'history/lib/createLocation';
 
-// createMemoryHistory is "used mainly for testing and does not persist
-// state across sessions"
-import createHistory from 'history/lib/createMemoryHistory';
-
 // pull in src/routes.js into the variable "getRoutes". It is a function
 // that takes one variable, which is the Redux store.
 import getRoutes from 'routes';
@@ -72,8 +68,8 @@ const generatePage = (store, renderProps, initialState) => {
   return `
     <!DOCTYPE html>
     ${htmlBody}
-  `
-}
+  `;
+};
 
 export default (req, res) => {
   // location is used to provide the correct renderProps to RoutingContext
@@ -82,7 +78,6 @@ export default (req, res) => {
   // Redux store is initialized on every page load.
   // look in the reducers for default values.
   const store = createStore();
-  const history = createHistory();
   const initialState = store.getState();
   const routes = getRoutes(initialState);
 
@@ -91,7 +86,7 @@ export default (req, res) => {
     if (error) {
 
       // show error in terminal window / STDOUT
-      console.log(error)
+      console.log(error);
 
       res.status(500).send(error.message);
 
@@ -102,4 +97,4 @@ export default (req, res) => {
       res.send(generatePage(store, renderProps, initialState));
     }
   });
-}
+};
