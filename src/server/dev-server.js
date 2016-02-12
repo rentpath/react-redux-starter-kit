@@ -9,22 +9,6 @@ import config from '../../webpack/dev.config';
 // function to enhance the express application with development
 // mode features
 export default (app) => {
-
-  // This is here and not in `.babelrc` because it's only used for the client
-  // config.module.loaders[0].query = config.module.loaders[0].query || {};
-  // config.module.loaders[0].query.plugins = config.module.loaders[0].query.plugins || [];
-  // config.module.loaders[0].query.plugins.push([
-  //   'react-transform', {
-  //     transforms: [
-  //       {
-  //         target: 'react-transform-hmr',
-  //         imports: ['react'],
-  //         locals: ['module']
-  //       }
-  //     ]
-  //   }
-  // ]);
-
   const compiler = webpack(config);
 
   // serves assets compiled into memory without saving them

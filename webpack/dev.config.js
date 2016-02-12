@@ -41,7 +41,18 @@ module.exports = {
         test: /\.jsx?$/,
         loader: 'babel',
         exclude: /node_modules/,
-        include: path.join(__dirname, '../src')
+        include: path.join(__dirname, '../src'),
+        query: {
+          plugins: [
+            ['react-transform', {
+              'transforms': [{
+                'transform': 'react-transform-hmr',
+                'imports': ['react'],
+                'locals': ['module'] // this is important for Webpack HMR
+              }]
+            }]
+          ]
+        }
       },
       {
         test: /\.css$/,
