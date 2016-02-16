@@ -1,6 +1,11 @@
 # React + Redux Starter Kit
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
+This starter kit is intended to gather best practices and experiment with new libs.
+
+## [Styleguide](http://rentpath.github.io/react-redux-starter-kit/#!/react-redux-starter-kit/)
+
+The [styleguide](http://rentpath.github.io/react-redux-starter-kit/#!/react-redux-starter-kit/) is built with [react-styleguide-generator-alt](https://github.com/theogravity/react-styleguide-generator-alt). Use it to see any component in action.
 
 ## Scripts
 * `npm start` - Start the dev server and watch for changes
