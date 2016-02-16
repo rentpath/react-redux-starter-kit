@@ -10,7 +10,9 @@
     "lint:fix": "npm run lint -- --fix",
     "test": "NODE_PATH=./src:./test mocha src/**/__tests__/*.js src/**/**/__tests__/*.js",
     "test:watch": "npm run test -- --watch",
-    "test:cov": "babel-node `npm bin`/istanbul cover `npm bin`/_mocha -- --recursive"
+    "test:cov": "babel-node `npm bin`/istanbul cover `npm bin`/_mocha -- --recursive",
+    "styleguide": "rsg -c styleguide.js 'src/components/!(__tests__)/*.js'",
+    "styleguide:watch": "rsg -c styleguide.js 'src/components/!(__tests__)/*.js' -d"
   },
   "repository": {
     "type": "git",
@@ -54,6 +56,7 @@
     "babel-loader": "^6.2.1",
     "babel-plugin-react-transform": "2.0.0",
     "babel-plugin-transform-decorators-legacy": "1.3.4",
+    "babel-plugin-transform-react-remove-statics": "0.0.5",
     "babel-preset-es2015": "6.5.0",
     "babel-preset-react": "6.5.0",
     "babel-preset-stage-0": "6.5.0",
@@ -86,6 +89,7 @@
     "redux-devtools": "^3.0.1",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.2",
+    "rsg-alt": "*",
     "strip-loader": "^0.1.0",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",

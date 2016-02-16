@@ -1,9 +1,32 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './Books.css';
 
+/**
+ * Display a book search form
+ */
 export default class Form extends Component {
+  static displayName = 'Form';
+
   static propTypes = {
+    /**
+     * Handler for form submission
+     */
     onSubmit: PropTypes.func.isRequired
+  };
+
+  static styleguide = {
+    category: 'Books',
+    index: '2.0',
+    title: 'Form',
+    exampleComponent: Form,
+    examples: [
+      {
+        tabTitle: 'Sample',
+        props: {
+          onSubmit: () => { console.log('Form onSubmit'); }
+        }
+      }
+    ]
   };
 
   handleSearch(event) {
