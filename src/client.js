@@ -51,7 +51,7 @@ Object
 const history = createBrowserHistory();
 const store = require('./store').default(initialState);
 
-let component = (
+const component = (
   <Router history={history} children={getRoutes(store.getState())} />
 );
 
