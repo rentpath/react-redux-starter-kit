@@ -16,9 +16,6 @@ import createLogger from 'redux-logger';
 // loads ./reducers/index.js
 import rootReducer from './reducers';
 
-// May not be needed. ref: https://github.com/zalmoxisus/redux-devtools-extension/issues/5
-import DevTools from './containers/DevTools/DevTools';
-
 // "export default function" means you can call the require statement as a function.
 export default function configureStore(initialState) {
 
@@ -27,7 +24,7 @@ export default function configureStore(initialState) {
     initialState,
     compose(
       applyMiddleware(thunk, createLogger()),
-      DevTools.instrument()
+      typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
     )
   );
 
@@ -45,6 +42,5 @@ export default function configureStore(initialState) {
       store.replaceReducer(require('./reducers'))
     );
   }
-
   return store;
 }

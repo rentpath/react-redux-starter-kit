@@ -26,9 +26,6 @@ import createLocation from 'history/lib/createLocation';
 // that takes one variable, which is the Redux store.
 import getRoutes from 'routes';
 
-// developer sidebar React component
-import DevTools from 'containers/DevTools/DevTools';
-
 // this refers to /src/store.js, and it is accepted by node without
 // the './' because /src is part of $NODE_PATH (I think). createStore
 // accepts the initialState and returns the store for this application.
@@ -44,15 +41,6 @@ const generatePage = (store, renderProps, initialState) => {
   let component = (
     <RoutingContext {...renderProps} />
   );
-
-  if (__DEVELOPMENT__) {
-    component = (
-      <div>
-        {component}
-        <DevTools />
-     </div>
-    );
-  }
 
   const providerComponent = (
     <Provider store={store} key="provider">

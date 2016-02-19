@@ -25,5 +25,10 @@ $ git cz
 ```
 `git cz` will bring up the Commitizen commit prompt, follow the instructions, and `$ git push` as usual.
 
+
+## Dev Tools
+  `react-redux-starter-kit` uses [Redux Dev Tools Extension](https://github.com/zalmoxisus/redux-devtools-extension/blob/master/README.md). You can [Download it from the chrome store](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)
+
+  Once installed, simply open the devtools in chrome(`cmd-option-j`) and click on the `Redux` tab.
 ## License
 MIT

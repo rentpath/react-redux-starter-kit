@@ -28,9 +28,6 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 // that takes one variable, which is the Redux store.
 import getRoutes from 'routes';
 
-// developer sidebar React component
-import DevTools from './containers/DevTools/DevTools';
-
 // polyfill the global environment (either in Node or in the browser via CommonJS)
 require('es6-promise').polyfill();
 
@@ -54,20 +51,9 @@ Object
 const history = createBrowserHistory();
 const store = require('./store').default(initialState);
 
-let component = (
+const component = (
   <Router history={history} children={getRoutes(store.getState())} />
 );
-
-if (__DEVELOPMENT__) {
-  window.React = React; // enable debugger
-
-  component = (
-    <div>
-      {component}
-      <DevTools />
-    </div>
-  );
-}
 
 ReactDOM.render(
   <Provider store={store} key="provider">
