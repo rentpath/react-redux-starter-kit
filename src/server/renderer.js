@@ -38,7 +38,7 @@ import HTML from '../helpers/html';
 // renderProps is pulled from request
 // new store is made each request
 const generatePage = (store, renderProps, initialState) => {
-  let component = (
+  const component = (
     <RoutingContext {...renderProps} />
   );
 
