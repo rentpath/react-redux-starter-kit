@@ -110,8 +110,15 @@
     }
   },
   "scripts-info": {
-    "info": "Displays information about the scripts.",
-    "watch:build": "Compiles the scripts and watches for changes.",
-    "start": "Kickstarts the application."
+    "build": "Build JavaScript assets once",
+    "start": "Install and boot a local server at localhost:3000",
+    "lint": "Run eslint and report errors",
+    "lint:fix": "Run eslint and attempt to fix errors",
+    "info": "See `npm run info`",
+    "test": "Run mocha tests",
+    "test:watch": "Same as `test`, but runs tests when files change",
+    "test:cov": "Run tests and report coverage",
+    "styleguide": "Build the styleguide from the React components",
+    "styleguide:watch": "Same as `styleguide`, but continues watching for changes"
   }
 }
