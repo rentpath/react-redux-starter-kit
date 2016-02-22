@@ -8,6 +8,7 @@
     "start": "npm install && PORT=3000 NODE_PATH=$NODE_PATH:./src node --harmony bin/server.js",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
+    "info": "npm-scripts-info",
     "test": "NODE_PATH=./src:./test mocha src/**/__tests__/*.js src/**/**/__tests__/*.js",
     "test:watch": "npm run test -- --watch",
     "test:cov": "babel-node `npm bin`/istanbul cover `npm bin`/_mocha -- --recursive",
@@ -34,6 +35,7 @@
     "history": "1.12.6",
     "immutable": "^3.7.5",
     "isomorphic-fetch": "^2.2.0",
+    "npm-scripts-info": "^0.1.0",
     "piping": "^0.3.0",
     "pretty-error": "^1.2.0",
     "react": "^0.14.0",
@@ -106,5 +108,17 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "scripts-info": {
+    "build": "Build JavaScript assets once",
+    "start": "Install and boot a local server at localhost:3000",
+    "lint": "Run eslint and report errors",
+    "lint:fix": "Run eslint and attempt to fix errors",
+    "info": "See `npm run info`",
+    "test": "Run mocha tests",
+    "test:watch": "Same as `test`, but runs tests when files change",
+    "test:cov": "Run tests and report coverage",
+    "styleguide": "Build the styleguide from the React components",
+    "styleguide:watch": "Same as `styleguide`, but continues watching for changes"
   }
 }
