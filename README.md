@@ -34,6 +34,11 @@ $ git cz
 ## Script Info
  Information about available scripts can be found by running:
 ` $ npm run info`
-
+ All the relevant script information is located in `package.json`, under `scripts-info`. If you update a script, make sure you also update the corresponsding script key. For example, if you were to modify the `build` script, you would update the `build` key like so:
+```
+"scripts-info": {
+    "build": "Build JavaScript assets once",
+    ...
+```
 ## License
 MIT
