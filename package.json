@@ -13,11 +13,12 @@
     "test:watch": "npm run test -- --watch",
     "test:cov": "babel-node `npm bin`/istanbul cover `npm bin`/_mocha -- --recursive",
     "styleguide": "rsg -c styleguide.js 'src/components/!(__tests__)/*.js'",
-    "styleguide:watch": "rsg -c styleguide.js 'src/components/!(__tests__)/*.js' -d"
+    "styleguide:watch": "rsg -c styleguide.js 'src/components/!(__tests__)/*.js' -d",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rentpath/react-redux-starter-kit.git"
+    "url": "https://github.com/rentpath/react-redux-starter-kit.git"
   },
   "author": "Caleb Wright, Colin Rymer",
   "license": "MIT",
