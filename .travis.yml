@@ -12,8 +12,8 @@ node_js:
 before_script:
   - npm prune
 script:
-  - npm test
   - npm run clean
+  - npm test
   - npm run build
 after_success:
   - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && npm run semantic-release
