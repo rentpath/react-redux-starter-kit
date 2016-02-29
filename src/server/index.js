@@ -17,7 +17,7 @@ require('css-modules-require-hook')({
               .replace(/\//g, '-')
               .replace('.css', '')
 
-    return `${path}+${exportedName}`
+    return `${path}-${exportedName}`
   }
 })
 
