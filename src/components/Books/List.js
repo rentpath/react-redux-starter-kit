@@ -1,19 +1,19 @@
-import React, { Component, PropTypes } from 'react';
-import { List, fromJS } from 'immutable';
-import styles from './Books.css';
+import React, { Component, PropTypes } from 'react'
+import { List, fromJS } from 'immutable'
+import styles from './Books.css'
 
 /**
  * List of search results
  */
 export default class BookList extends Component {
-  static displayName = 'List';
+  static displayName = 'List'
 
   static propTypes = {
     /**
      * Array of books (`List`)
      */
     items: PropTypes.instanceOf(List)
-  };
+  }
 
   static styleguide = {
     category: 'Books',
@@ -50,15 +50,15 @@ export default class BookList extends Component {
   }
 
   render() {
-    const { items } = this.props;
+    const { items } = this.props
     return (
       <div>
-        {(items || []).map((book) => {
+        {(items || []).map(book => {
           return (
             <p className={styles.listItem} key={book.get('id')}>{book.get('volumeInfo').get('title')}</p>
-          );
+          )
         })}
       </div>
-    );
+    )
   }
 }

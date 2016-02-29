@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { IndexRoute, Route } from 'react-router';
+import { IndexRoute, Route } from 'react-router'
 import {
     App,
     About,
     Books,
     Home,
     NotFound
-  } from 'containers';
+  } from 'containers'
 
-export default (state) => {
+export default state => {
   return (
     <Route path="/" component={App} state={state}>
       <IndexRoute component={Home}/>
@@ -19,5 +19,5 @@ export default (state) => {
       { /* Catch all  */ }
       <Route path="*" component={NotFound} status={404} />
     </Route>
-  );
-};
+  )
+}

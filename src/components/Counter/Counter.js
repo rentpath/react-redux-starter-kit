@@ -1,12 +1,12 @@
-import React, { Component, PropTypes } from 'react';
-import Display from './Display';
-import Button from './Button';
+import React, { Component, PropTypes } from 'react'
+import Display from './Display'
+import Button from './Button'
 
 /**
  * A +1/-1 counter and display
  */
 export default class Counter extends Component {
-  static displayName = 'Counter';
+  static displayName = 'Counter'
 
   static propTypes = {
     /**
@@ -21,7 +21,7 @@ export default class Counter extends Component {
      * Display the current count
      */
     count: PropTypes.number.isRequired
-  };
+  }
 
   static styleguide = {
     category: 'Counter',
@@ -33,21 +33,21 @@ export default class Counter extends Component {
         tabTitle: 'Sample',
         props: {
           count: 1,
-          onIncrement: () => { console.log('Counter onIncrement'); },
-          onDecrement: () => { console.log('Counter onDecrement'); }
+          onIncrement: () => { console.log('Counter onIncrement') },
+          onDecrement: () => { console.log('Counter onDecrement') }
         }
       }
     ]
-  };
+  }
 
   render() {
-    const { count, onIncrement, onDecrement } = this.props;
+    const { count, onIncrement, onDecrement } = this.props
     return (
       <div>
         <Display count={count} />
         <Button type="positive" text="+1" onClick={onIncrement} />
         <Button type="negative" text="-1" onClick={onDecrement} />
       </div>
-    );
+    )
   }
 }

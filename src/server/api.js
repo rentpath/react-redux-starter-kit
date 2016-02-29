@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require('express')
 
-const api = express.Router();
+const api = express.Router()
 
 api.get('/whoami', (req, res) => {
-  res.send('You are a winner');
-});
+  res.send('You are a winner')
+})
 
-export default api;
+export default api
