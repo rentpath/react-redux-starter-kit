@@ -18,6 +18,7 @@
     // Does not work well with Immutable. e.g. Map({ foo: 'bar' })
     "new-cap": 0
   },
+  "parser": "babel-eslint",
   "plugins": [
     "react"
   ],
