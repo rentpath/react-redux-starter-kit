@@ -58,7 +58,6 @@ export default (req, res) => {
   const initialState = store.getState();
   const routes = getRoutes(initialState);
 
-  // history.match
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
       console.log(error);

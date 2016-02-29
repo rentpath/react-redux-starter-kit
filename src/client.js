@@ -18,6 +18,7 @@ import { fromJS } from 'immutable';
 
 // Router keeps the URL in sync with what's being displayed on the page
 import { Router, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 
 // pull in src/routes.js into the variable "getRoutes". It is a function
 // that takes one variable, which is the Redux store.
@@ -42,9 +43,10 @@ Object
   });
 
 const store = require('./store').default(initialState);
+const history = syncHistoryWithStore(browserHistory, store);
 
 const component = (
-  <Router history={browserHistory} children={getRoutes(store.getState())} />
+  <Router history={history} children={getRoutes(store.getState())} />
 );
 
 ReactDOM.render(
