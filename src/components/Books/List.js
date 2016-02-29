@@ -50,14 +50,17 @@ export default class BookList extends Component {
   }
 
   render() {
-    const { items } = this.props
+    let { items } = this.props
+    items = items || []
+
     return (
       <div>
-        {(items || []).map(book => {
-          return (
-            <p className={styles.listItem} key={book.get('id')}>{book.get('volumeInfo').get('title')}</p>
+        {items.map(book => (
+            <p className={styles.listItem} key={book.get('id')}>
+              {book.get('volumeInfo').get('title')}
+            </p>
           )
-        })}
+        )}
       </div>
     )
   }

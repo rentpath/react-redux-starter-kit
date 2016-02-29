@@ -18,7 +18,8 @@ import rootReducer from './reducers'
 
 // "export default function" means you can call the require statement as a function.
 export default function configureStore(initialState) {
-  const devToolsExtension = typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
+  const w = typeof window === 'object' ? window : {}
+  const devToolsExtension = w.devToolsExtension ? w.devToolsExtension() : f => f
 
   const store = createStore(
     rootReducer,

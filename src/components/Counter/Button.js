@@ -50,7 +50,9 @@ export default class Button extends Component {
   render() {
     const { onClick } = this.props
     return (
-      <button className={styles[this.props.type]} onClick={() => onClick()}>{this.props.text}</button>
+      <button className={styles[this.props.type]} onClick={() => onClick()}>
+        {this.props.text}
+      </button>
     )
   }
 }

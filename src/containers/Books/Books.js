@@ -19,7 +19,9 @@ export default class Books extends Component {
       <div>
         <h1>Books!</h1>
         <BooksForm {...bindActionCreators({ onSubmit: fetchBooks }, dispatch)} />
-        <BooksSearchStatus isFetching={books.get('isFetching')} didInvalidate={books.get('didInvalidate')} />
+        <BooksSearchStatus
+          isFetching={books.get('isFetching')}
+          didInvalidate={books.get('didInvalidate')} />
         <BooksList items={books.get('items')} />
       </div>
     )
