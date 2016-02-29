@@ -1,10 +1,9 @@
 {
   "name": "react-redux-starter-kit",
-  "version": "0.0.1",
+  "version": "0.0.0-semantically-released",
   "description": "Skeleton structure for an isomorphic JS app using React, Redux, and other packages preferred by RentPath.",
   "main": "bin/server.js",
   "scripts": {
-    "build": "webpack & webpack --config webpack/prod.config.js",
     "start": "npm install && PORT=3000 NODE_PATH=$NODE_PATH:./src node --harmony bin/server.js",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
@@ -13,11 +12,12 @@
     "test:watch": "npm run test -- --watch",
     "test:cov": "babel-node `npm bin`/istanbul cover `npm bin`/_mocha -- --recursive",
     "styleguide": "rsg -c styleguide.js 'src/components/!(__tests__)/*.js'",
-    "styleguide:watch": "rsg -c styleguide.js 'src/components/!(__tests__)/*.js' -d"
+    "styleguide:watch": "rsg -c styleguide.js 'src/components/!(__tests__)/*.js' -d",
+    "semantic-release": "semantic-release pre && npm build && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rentpath/react-redux-starter-kit.git"
+    "url": "https://github.com/rentpath/react-redux-starter-kit.git"
   },
   "author": "Caleb Wright, Colin Rymer",
   "license": "MIT",
@@ -73,8 +73,7 @@
     "cz-conventional-changelog": "1.1.5",
     "enzyme": "2.0.0",
     "eslint": "^1.10.3",
-    "eslint-config-airbnb": "^0.1.0",
-    "eslint-config-standard": "^4.4.0",
+    "eslint-config-rentpath": "^1.1.0",
     "eslint-loader": "^1.1.0",
     "eslint-plugin-import": "^0.8.1",
     "eslint-plugin-react": "^3.6.3",
@@ -92,6 +91,7 @@
     "react-addons-test-utils": "^0.14.0",
     "react-transform-hmr": "^1.0.1",
     "rsg-alt": "*",
+    "semantic-release": "^4.3.5",
     "strip-loader": "^0.1.0",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
@@ -122,3 +122,4 @@
     "styleguide:watch": "Same as `styleguide`, but continues watching for changes"
   }
 }
+

@@ -1,4 +1,4 @@
-{ "extends": "eslint-config-airbnb",
+{ "extends": "rentpath",
   "env": {
     "browser": true,
     "node": true,
