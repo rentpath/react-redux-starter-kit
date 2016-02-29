@@ -4,8 +4,6 @@
   "description": "Skeleton structure for an isomorphic JS app using React, Redux, and other packages preferred by RentPath.",
   "main": "bin/server.js",
   "scripts": {
-    "build": "webpack & webpack --config webpack/prod.config.js",
-    "clean": "rm -rf node_modules && npm install",
     "start": "npm install && PORT=3000 NODE_PATH=$NODE_PATH:./src node --harmony bin/server.js",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
