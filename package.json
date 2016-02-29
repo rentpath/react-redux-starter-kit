@@ -4,7 +4,7 @@
   "description": "Skeleton structure for an isomorphic JS app using React, Redux, and other packages preferred by RentPath.",
   "main": "bin/server.js",
   "scripts": {
-    "start": "npm install && PORT=3000 NODE_PATH=$NODE_PATH:./src node --harmony bin/server.js",
+    "start": "PORT=3000 NODE_PATH=$NODE_PATH:./src node --harmony bin/server.js",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix",
     "info": "npm-scripts-info",
@@ -122,4 +122,3 @@
     "styleguide:watch": "Same as `styleguide`, but continues watching for changes"
   }
 }
-
