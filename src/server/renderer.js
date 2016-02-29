@@ -8,19 +8,11 @@ import { Provider } from 'react-redux';
 // match is a function that compares a given path to a set of routes
 // and calls your callback function with the renderProps for the
 // matching route (or null)
-import { match } from 'react-router';
-
-// renders the component tree for a given router state and sets the
-// history object and the current location in context.
-import { RoutingContext } from 'react-router';
+import { match, RouterContext } from 'react-router';
 
 // ReactDOMServer is the API for rendering React components into
 // an HTML string. This is done on the server.
 import ReactDOMServer from 'react-dom/server';
-
-// A location object is conceptually similar to document.location in
-// web browsers, with a few extra goodies.
-import createLocation from 'history/lib/createLocation';
 
 // pull in src/routes.js into the variable "getRoutes". It is a function
 // that takes one variable, which is the Redux store.
@@ -39,7 +31,7 @@ import HTML from '../helpers/html';
 // new store is made each request
 const generatePage = (store, renderProps, initialState) => {
   const component = (
-    <RoutingContext {...renderProps} />
+    <RouterContext {...renderProps} />
   );
 
   const providerComponent = (
@@ -60,29 +52,22 @@ const generatePage = (store, renderProps, initialState) => {
 };
 
 export default (req, res) => {
-  // location is used to provide the correct renderProps to RoutingContext
-  const location = createLocation(req.url);
-
   // Redux store is initialized on every page load.
   // look in the reducers for default values.
   const store = createStore();
   const initialState = store.getState();
   const routes = getRoutes(initialState);
 
-  // history.match
-  match({ routes, location }, (error, redirectLocation, renderProps) => {
+  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (error) {
-
-      // show error in terminal window / STDOUT
       console.log(error);
-
       res.status(500).send(error.message);
-
-    // on success:
+    } else if (redirectLocation) {
+      res.redirect(302, redirectLocation.pathname + redirectLocation.search);
+    } else if (renderProps) {
+      res.status(200).send(generatePage(store, renderProps, initialState));
     } else {
-
-      // send rendered html as plain string.
-      res.send(generatePage(store, renderProps, initialState));
+      res.status(404).send('Not found');
     }
   });
 };

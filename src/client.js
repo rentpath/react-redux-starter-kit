@@ -17,12 +17,8 @@ import ReactDOM from 'react-dom';
 import { fromJS } from 'immutable';
 
 // Router keeps the URL in sync with what's being displayed on the page
-import { Router } from 'react-router';
-
-// history abstracts away the differences in platforms and provides a
-// common API to manage history. we are only including the web
-// module
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+import { Router, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 
 // pull in src/routes.js into the variable "getRoutes". It is a function
 // that takes one variable, which is the Redux store.
@@ -46,10 +42,8 @@ Object
     initialState[key] = fromJS(initialState[key]);
   });
 
-// initialize the history, initialize the store, create the component, add devtools
-// if development, and render everything
-const history = createBrowserHistory();
 const store = require('./store').default(initialState);
+const history = syncHistoryWithStore(browserHistory, store);
 
 const component = (
   <Router history={history} children={getRoutes(store.getState())} />
