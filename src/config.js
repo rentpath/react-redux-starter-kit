@@ -1,5 +1,5 @@
 // require just the ES6-to-JS conversion part of babel
-require('babel-polyfill');
+require('babel-polyfill')
 
 // the environment object is merged into the exports object below
 const environment = {
@@ -9,7 +9,7 @@ const environment = {
   production: {
     isProduction: true
   }
-}[process.env.NODE_ENV || 'development'];
+}[process.env.NODE_ENV || 'development']
 
 // exports are returned as a result of the require('src/config') statement
 module.exports = Object.assign({
@@ -41,4 +41,4 @@ module.exports = Object.assign({
       }
     }
   }
-}, environment);
+}, environment)

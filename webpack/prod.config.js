@@ -1,17 +1,17 @@
 // Webpack config for creating the production bundle.
-require('babel-core/polyfill');
-var path = require('path');
-var webpack = require('webpack');
-var CleanPlugin = require('clean-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var strip = require('strip-loader');
+require('babel-core/polyfill')
+var path = require('path')
+var webpack = require('webpack')
+var CleanPlugin = require('clean-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var strip = require('strip-loader')
 
-var relativeAssetsPath = '../static/dist';
-var assetsPath = path.join(__dirname, relativeAssetsPath);
+var relativeAssetsPath = '../static/dist'
+var assetsPath = path.join(__dirname, relativeAssetsPath)
 
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
-var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('webpack-isomorphic-tools'));
+var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
+var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('webpack-isomorphic-tools'))
 
 module.exports = {
   devtool: 'source-map',
@@ -76,10 +76,10 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-          warnings: false
-        }
+        warnings: false
+      }
     }),
 
     webpackIsomorphicToolsPlugin
   ]
-};
+}

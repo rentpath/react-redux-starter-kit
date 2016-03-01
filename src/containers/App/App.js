@@ -1,13 +1,13 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
-import styles from './App.css';
-import DocumentMeta from 'react-document-meta';
-import config from 'config';
+import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
+import styles from './App.css'
+import DocumentMeta from 'react-document-meta'
+import config from 'config'
 
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired
-  };
+  }
 
   render() {
     return (
@@ -22,6 +22,6 @@ export default class App extends Component {
         </nav>
         {this.props.children}
       </div>
-    );
+    )
   }
 }

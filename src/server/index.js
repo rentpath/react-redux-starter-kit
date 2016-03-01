@@ -1,5 +1,5 @@
 // express is sinatra for node
-import express from 'express';
+import express from 'express'
 
 // A CSS Module is a CSS file in which all class names and animation names
 // are scoped locally by default.
@@ -11,31 +11,30 @@ require('css-modules-require-hook')({
   // override the default behaviour of creating locally scoped classnames
   // in css-modulesify
   generateScopedName: (exportedName, exportedPath) => {
-
     // This path should match the localIdentName in your webpack.config.js.
     const path = exportedPath
               .substr(1)
               .replace(/\//g, '-')
-              .replace('.css', '');
+              .replace('.css', '')
 
-    return path + '-' + exportedName;
+    return `${path}-${exportedName}`
   }
-});
+})
 
-const app = express();
+const app = express()
 
 if (__DEVELOPMENT__) {
-  require('./dev-server').default(app);
+  require('./dev-server').default(app)
 }
 
 // Include server routes as a middleware
-app.use(function apiHandler(req, res, next) {
-  require('./api').default(req, res, next);
-});
+app.use((req, res, next) => {
+  require('./api').default(req, res, next)
+})
 
-app.use(express.static('static'));
+app.use(express.static('static'))
 
 // Anything else gets passed to the client app's server rendering
-app.use(require('./renderer').default);
+app.use(require('./renderer').default)
 
-export default app;
+export default app

@@ -1,11 +1,11 @@
-import React, { Component, PropTypes } from 'react';
-import styles from './Books.css';
+import React, { Component, PropTypes } from 'react'
+import styles from './Books.css'
 
 /**
  * Text display for the book search status
  */
 export default class SearchStatus extends Component {
-  static displayName = 'SearchStatus';
+  static displayName = 'SearchStatus'
 
   static propTypes = {
     /**
@@ -16,7 +16,7 @@ export default class SearchStatus extends Component {
      * if the search failed
      */
     didInvalidate: PropTypes.bool
-  };
+  }
 
   static styleguide = {
     category: 'Books',
@@ -50,25 +50,25 @@ export default class SearchStatus extends Component {
 
   message() {
     if (this.props.isFetching) {
-      return 'Searching...';
+      return 'Searching...'
     } else if (this.props.didInvalidate) {
-      return 'Uh oh! Something went wrong.';
+      return 'Uh oh! Something went wrong.'
     }
-    return '';
+    return ''
   }
 
   messageType() {
     if (this.props.isFetching) {
-      return 'waiting';
+      return 'waiting'
     } else if (this.props.didInvalidate) {
-      return 'uhoh';
+      return 'uhoh'
     }
-    return '';
+    return ''
   }
 
   render() {
     return (
       <p className={styles[this.messageType()]}>{this.message()}</p>
-    );
+    )
   }
 }

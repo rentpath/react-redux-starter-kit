@@ -1,11 +1,11 @@
-import React, { Component, PropTypes } from 'react';
-import styles from './Counter.css';
+import React, { Component, PropTypes } from 'react'
+import styles from './Counter.css'
 
 /**
  * A simple button to style for the counter and capture clicks.
  */
 export default class Button extends Component {
-  static displayName = 'Button';
+  static displayName = 'Button'
 
   static propTypes = {
     /**
@@ -20,7 +20,7 @@ export default class Button extends Component {
      * Name of button style `'positive|negative'`
      */
     type: PropTypes.oneOf(['positive', 'negative']).isRequired
-  };
+  }
 
   static styleguide = {
     index: '1.2',
@@ -33,7 +33,7 @@ export default class Button extends Component {
         props: {
           type: 'positive',
           text: '+',
-          onClick: () => { console.log('Positive button onClick'); }
+          onClick: () => { console.log('Positive button onClick') }
         }
       },
       {
@@ -41,16 +41,18 @@ export default class Button extends Component {
         props: {
           type: 'negative',
           text: '-',
-          onClick: () => { console.log('Negative button onClick'); }
+          onClick: () => { console.log('Negative button onClick') }
         }
       }
     ]
-  };
+  }
 
   render() {
-    const { onClick } = this.props;
+    const { onClick } = this.props
     return (
-      <button className={styles[this.props.type]} onClick={() => onClick()}>{this.props.text}</button>
-    );
+      <button className={styles[this.props.type]} onClick={() => onClick()}>
+        {this.props.text}
+      </button>
+    )
   }
 }
