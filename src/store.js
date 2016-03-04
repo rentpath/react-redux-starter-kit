@@ -10,9 +10,6 @@ import { compose } from 'redux'
 // allows actions to return promises for ajax requests.
 import thunk from 'redux-thunk'
 
-// exposes single constructor function for creating logger middleware.
-import createLogger from 'redux-logger'
-
 // loads ./reducers/index.js
 import rootReducer from './reducers'
 
@@ -25,7 +22,7 @@ export default function configureStore(initialState) {
     rootReducer,
     initialState,
     compose(
-      applyMiddleware(thunk, createLogger()),
+      applyMiddleware(thunk),
       devToolsExtension
     )
   )
